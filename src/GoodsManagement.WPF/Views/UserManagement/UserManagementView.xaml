@@ -1,0 +1,34 @@
+<UserManagementView.xaml>
+<UserControl x:Class="GoodsManagement.WPF.Views.UserManagement.UserManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GoodsManagement.WPF.ViewModels"
+             Title="User Management" Height="450" Width="800">
+    <UserControl.DataContext>
+        <local:UserManagementViewModel />
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBox Width="200" Margin="5" PlaceholderText="Search Users" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="Add User" Command="{Binding AddUserCommand}" Margin="5"/>
+        </StackPanel>
+        
+        <ListView Grid.Row="1" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Username" DisplayMemberBinding="{Binding Username}" Width="200"/>
+                    <GridViewColumn Header="Role" DisplayMemberBinding="{Binding Role}" Width="100"/>
+                    <GridViewColumn Header="Last Updated" DisplayMemberBinding="{Binding LastUpdated}" Width="150"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        <Button Content="Edit User" Command="{Binding EditUserCommand}" Margin="10" HorizontalAlignment="Right" Width="100"/>
+        <Button Content="Delete User" Command="{Binding DeleteUserCommand}" Margin="10" HorizontalAlignment="Right" Width="100"/>
+    </Grid>
+</UserControl>

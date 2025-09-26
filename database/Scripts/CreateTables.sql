@@ -1,0 +1,35 @@
+CREATE TABLE Users (
+    UserId INT PRIMARY KEY IDENTITY(1,1),
+    Username NVARCHAR(50) UNIQUE NOT NULL,
+    PasswordHash NVARCHAR(255) NOT NULL,
+    Role NVARCHAR(10) CHECK (Role IN ('Admin', 'User')) NOT NULL
+);
+
+CREATE TABLE Products (
+    ProductId INT PRIMARY KEY IDENTITY(1,1),
+    ProductName NVARCHAR(100) NOT NULL,
+    Packaging NVARCHAR(50) NOT NULL,
+    UnitOfMeasurement NVARCHAR(20) NOT NULL,
+    Price DECIMAL(18, 2) NOT NULL
+);
+
+CREATE TABLE Inventory (
+    InventoryId INT PRIMARY KEY IDENTITY(1,1),
+    ProductId INT FOREIGN KEY REFERENCES Products(ProductId),
+    StockQuantity INT NOT NULL,
+    LastUpdated DATETIME NOT NULL DEFAULT GETDATE()
+);
+
+CREATE TABLE InboundLogs (
+    LogId INT PRIMARY KEY IDENTITY(1,1),
+    ProductId INT FOREIGN KEY REFERENCES Products(ProductId),
+    Quantity INT NOT NULL,
+    Date DATETIME NOT NULL DEFAULT GETDATE()
+);
+
+CREATE TABLE OutboundLogs (
+    LogId INT PRIMARY KEY IDENTITY(1,1),
+    ProductId INT FOREIGN KEY REFERENCES Products(ProductId),
+    Quantity INT NOT NULL,
+    Date DATETIME NOT NULL DEFAULT GETDATE()
+);

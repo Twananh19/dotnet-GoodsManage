@@ -1,0 +1,23 @@
+<Window x:Class="GoodsManagement.WPF.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:GoodsManagement.WPF.Views"
+        Title="Main Window" Height="450" Width="800">
+    <Grid>
+        <Menu VerticalAlignment="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Exit" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Manage">
+                <MenuItem Header="Users" Click="ManageUsers_Click"/>
+                <MenuItem Header="Products" Click="ManageProducts_Click"/>
+                <MenuItem Header="Inventory" Click="ManageInventory_Click"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About" Click="About_Click"/>
+            </MenuItem>
+        </Menu>
+        
+        <Frame Name="MainFrame" Margin="0,25,0,0"/>
+    </Grid>
+</Window>

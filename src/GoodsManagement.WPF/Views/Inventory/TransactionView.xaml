@@ -1,0 +1,30 @@
+<Window x:Class="GoodsManagement.WPF.Views.Inventory.TransactionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Transaction Management" Height="450" Width="800">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Manage Inventory Transactions" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
+            
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBlock Text="Product:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <ComboBox x:Name="ProductComboBox" Width="200"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBlock Text="Quantity:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox x:Name="QuantityTextBox" Width="200"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                <TextBlock Text="Transaction Type:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <ComboBox x:Name="TransactionTypeComboBox" Width="200">
+                    <ComboBoxItem Content="Inbound"/>
+                    <ComboBoxItem Content="Outbound"/>
+                </ComboBox>
+            </StackPanel>
+
+            <Button Content="Submit Transaction" Width="150" Click="SubmitTransaction_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
